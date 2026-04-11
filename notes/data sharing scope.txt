@@ -1,0 +1,21 @@
+Data Sharing Scope:-
+---------------------
+
+	1. request(HttpServletRequest)
+	---------------------------------
+
+		request.setAttribute(String key, Object value);
+
+		Object value =  (Object)request.getAttribute(String key);
+
+		request.removeAttribute(String key);
+
+
+
+	Student s1;
+	FirstServlet<------------->SecondServlet	
+
+
+	2. session(HttpSession) 
+
+	3. application(ServleetContext)

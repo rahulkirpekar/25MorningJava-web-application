@@ -1,0 +1,12 @@
+WebApplication static Configuration:-
+---------------------------------------
+
+1. servlet level(ServletConfig):-
+---------------------------------
+
+	
+
+
+
+
+2. Application Configuration(ServletContext)

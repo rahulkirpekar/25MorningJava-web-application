@@ -1,0 +1,26 @@
+Servlet Collaboration:-
+---------------------------
+
+	servlet1---------->servlet2
+
+	servlet1---------->jsp
+
+	jsp--------------->servlet1
+
+1. request:-
+--------------
+	1. forward()
+	2. include()	
+
+2. response:-
+--------------
+
+	response.sendRedirect("urlPattern");
+
+
+
+
+
+
+
+

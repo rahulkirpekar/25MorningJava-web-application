@@ -1,0 +1,51 @@
+Data Sharing Scope:-
+---------------------
+
+1. request(HttpServletRequest)
+---------------------------------	
+	1. setAttribute(String key,Object value);
+	2. Object value = getAttribute(String key);
+	3. removeAttribute(String key);
+
+				   session
+2. session(HttpSession)---[login--------------logout]
+---------------------------------	
+	1. setAttribute(String key,Object value);
+	2. Object value = getAttribute(String key);
+	3. removeAttribute(String key);
+
+3. application(Servlet Context)(can use within Whole Application)
+---------------------------------	
+	1. setAttribute(String key,Object value);
+	2. Object value = getAttribute(String key);
+	3. removeAttribute(String key);
+
+
+
+Session:-
+---------
+			      Data Sharing 
+			        session
+		login<--------------------------->logout
+
+
+	1. session create(login) :-
+	--------------------------
+
+		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);	
+
+
+	session.setAttribute(String key,Object value);
+
+
+	2. logout(session Destroy/Delete) :-
+	----------------------------------
+
+		session.invalidate();// session -- delete--logout
+
+
+
+	
+
