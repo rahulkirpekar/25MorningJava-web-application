@@ -167,4 +167,16 @@
 	<url-pattern>/EleventhServlet</url-pattern>  
   </servlet-mapping>
   
+  
+  <servlet>
+  	<servlet-name>ThirteenServlet</servlet-name>
+  	<servlet-class>com.royal.controller.ThirteenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ThirteenServlet</servlet-name>
+	<url-pattern>/ThirteenServlet</url-pattern>  
+  </servlet-mapping>
+  
+  
+  
 </web-app>

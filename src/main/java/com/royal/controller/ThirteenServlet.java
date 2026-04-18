@@ -8,15 +8,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class EleventhServlet extends HttpServlet
+public class ThirteenServlet extends HttpServlet
 {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("EleventhServlet : service()");
 		ServletContext context = getServletContext();
 		
-		context.setAttribute("name1", "Rahul Kirpekar");
-		context.setAttribute("name2", "Ankur Barot");
+		String name1 = (String)context.getAttribute("name1");
+		String name2 = (String)context.getAttribute("name2");
+		
+		System.out.println("ThirteenServlet : ");
+		System.out.println("Name1 : " + name1);
+		System.out.println("Name2 : " + name2);
 	}
 }
