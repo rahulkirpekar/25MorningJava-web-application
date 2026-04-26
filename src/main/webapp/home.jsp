@@ -13,5 +13,17 @@
 		}
 	%>	
 	
+	Result is : <%=100*200%>
+	
+	<%!
+		int getCube(int no)
+		{
+			return(no*no*no);
+		}
+	%>
+	
+	<br>
+	Cube : <%=getCube(5)%>
+	
 </body>
 </html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Registration</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #f3f7ff;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Header */
+    .header {
+        background: #007bff;
+        color: white;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header span {
+        font-size: 14px;
+    }
+
+    .logout-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .logout-btn:hover {
+        background: #b52a37;
+    }
+
+    /* Container */
+    .container {
+        width: 480px;
+        background: white;
+        margin: 30px auto;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 14px;
+        display: block;
+        margin-top: 10px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #888;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        width: auto;
+        margin-right: 6px;
+    }
+
+    .inline-options {
+        margin-top: 6px;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-left: 5px;
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    input[type="submit"], input[type="reset"] {
+        width: 120px;
+        padding: 10px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"] {
+        background: #007bff;
+    }
+
+    input[type="submit"]:hover {
+        background: #0056b3;
+    }
+
+    input[type="reset"] {
+        background: #6c757d;
+    }
+
+    input[type="reset"]:hover {
+        background: #545b62;
+    }
+
+    .db-error {
+        text-align: center;
+        color: red;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+function confirmLogout() {
+    return confirm("Are you sure you want to logout?");
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <span>Welcome, <b></b></span>
+
+    <form action="LogoutServlet" method="post" onsubmit="return confirmLogout();">
+        <input type="submit" value="Logout" class="logout-btn">
+    </form>
+</div>
+
+<!-- Form Container -->
+<div class="container">
+
+    <div class="db-error">${dberror}</div>
+
+    <h2>Student Registration</h2>
+
+    <form action="InsertStudentServlet" method="post">
+
+        <label>Full Name <span class="error"></span></label>
+        <input type="text" name="fullname" value="">
+
+        <label>Age <span class="error"></span></label>
+        <input type="number" name="age" value="">
+
+        <label>Select Course <span class="error"></span></label>
+        <select name="course">
+            <option value="">-- Select Course --</option>
+            <option value="C Programming">C Programming</option>
+            <option value="C++">C++</option>
+            <option value="Core Java">Core Java</option>
+            <option value="Advanced Java"}>Advanced Java</option>
+            <option value="Python">Python</option>
+        </select>
+
+        <label>Gender <span class="error"></span></label>
+        <div class="inline-options">
+            <input type="radio" name="gender" value="Male"   > Male
+            <input type="radio" name="gender" value="Female" > Female
+            <input type="radio" name="gender" value="Other"  > Other
+        </div>
+
+        <label>Hobbies <span class="error"></span></label>
+        <div class="inline-options">
+            <input type="checkbox" name="hobby" value="Reading"> Reading
+            <input type="checkbox" name="hobby" value="Music"  > Music
+            <input type="checkbox" name="hobby" value="Sports" > Sports
+            <input type="checkbox" name="hobby" value="Coding" > Coding
+        </div>
+
+        <label>Date of Birth <span class="error"></span></label>
+        <input type="date" name="dob" value="">
+
+        <label>Email <span class="error"></span></label>
+        <input type="email" name="email" value="">
+
+        <label>Mobile <span class="error"></span></label>
+        <input type="tel" name="mobile" value="">
+
+        <label>Address <span class="error"></span></label>
+        <textarea name="address" rows="3"></textarea>
+
+        <div class="btn-container">
+            <input type="submit" value="Register">
+            <input type="reset" value="Clear">
+        </div>
+    </form>
+</div>
+</body>
+</html>

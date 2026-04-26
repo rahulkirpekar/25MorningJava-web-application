@@ -1,0 +1,61 @@
+
+
+	HTML---tags + Java Code
+
+	SERVLET---Html tags(10%) + Java Code(90%)
+	      |	
+	     jsp ---Html tags(90%) + Java Code(10%)	
+
+	JSP - Java Server Pages
+	-------------------------
+		1. translate into Servlet File
+		2. Servlet File compile---Servlet Java Class
+		3. Java Class--run
+		4. Output
+Scripting Elements:-
+--------------------
+
+Jsp---Servlet
+
+home.jsp
+
+class home_jsp extends HttpJspBase
+{
+	service()
+	{	
+			
+	}
+}
+
+
+1. Scriptlet Tag:-
+-------------------
+	<%
+		
+	%>
+
+2. Expression Tag:-
+-------------------
+
+
+3. Declaration Tag:-
+-------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
