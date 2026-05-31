@@ -153,48 +153,48 @@ function confirmLogout() {
 
     <form action="InsertStudentServlet" method="post">
 
-        <label>Full Name <span class="error"></span></label>
-        <input type="text" name="fullname" value="">
+        <label>Full Name <span class="error">${fullNameErr}</span></label>
+        <input type="text" name="fullname" value="${sbean.fullName}">
 
-        <label>Age <span class="error"></span></label>
-        <input type="number" name="age" value="">
+        <label>Age <span class="error">${ageErr}</span></label>
+        <input type="number" name="age" value="${sbean.age}">
 
-        <label>Select Course <span class="error"></span></label>
+        <label>Select Course <span class="error">${courseErr}</span></label>
         <select name="course">
             <option value="">-- Select Course --</option>
-            <option value="C Programming">C Programming</option>
-            <option value="C++">C++</option>
-            <option value="Core Java">Core Java</option>
-            <option value="Advanced Java"}>Advanced Java</option>
-            <option value="Python">Python</option>
+            <option value="C Programming" ${sbean.course=='C Programming' ? 'selected':''}			>C Programming</option>
+            <option value="C++" 		  ${sbean.course=='C++' 		  ? 'selected':''}					>C++</option>
+            <option value="Core Java" 	  ${sbean.course=='Core Java' 	  ? 'selected':''}				>Core Java</option>
+            <option value="Advanced Java" ${sbean.course=='Advanced Java' ? 'selected':''}			>Advanced Java</option>
+            <option value="Python" 		  ${sbean.course=='Python' 		  ? 'selected':''}					>Python</option>
         </select>
 
-        <label>Gender <span class="error"></span></label>
+        <label>Gender <span class="error">${genderErr}</span></label>
         <div class="inline-options">
-            <input type="radio" name="gender" value="Male"   > Male
-            <input type="radio" name="gender" value="Female" > Female
-            <input type="radio" name="gender" value="Other"  > Other
+            <input type="radio" name="gender" value="Male"    ${sbean.gender=='Male' ? 'checked' : ''}> Male
+            <input type="radio" name="gender" value="Female"  ${sbean.gender=='Female' ? 'checked' : ''}> Female
+            <input type="radio" name="gender" value="Other"   ${sbean.gender=='Other' ? 'checked' : ''}> Other
         </div>
 
-        <label>Hobbies <span class="error"></span></label>
+        <label>Hobbies <span class="error">${hobbyErr}</span></label>
         <div class="inline-options">
-            <input type="checkbox" name="hobby" value="Reading"> Reading
-            <input type="checkbox" name="hobby" value="Music"  > Music
-            <input type="checkbox" name="hobby" value="Sports" > Sports
-            <input type="checkbox" name="hobby" value="Coding" > Coding
+            <input type="checkbox" name="hobby" value="Reading"  ${sbean.isAvailableHobby("Reading") ? 'checked' : ''}> Reading
+            <input type="checkbox" name="hobby" value="Music"    ${sbean.isAvailableHobby("Music") ? 'checked' : ''}> Music
+            <input type="checkbox" name="hobby" value="Sports"   ${sbean.isAvailableHobby("Sports") ? 'checked' : ''}> Sports
+            <input type="checkbox" name="hobby" value="Coding"   ${sbean.isAvailableHobby("Coding") ? 'checked' : ''}> Coding
         </div>
 
-        <label>Date of Birth <span class="error"></span></label>
-        <input type="date" name="dob" value="">
+        <label>Date of Birth <span class="error">${dobErr}</span></label>
+        <input type="date" name="dob" value="${sbean.dob }">
 
-        <label>Email <span class="error"></span></label>
-        <input type="email" name="email" value="">
+        <label>Email <span class="error">${emailErr}</span></label>
+        <input type="email" name="email" value="${sbean.email }">
 
-        <label>Mobile <span class="error"></span></label>
-        <input type="tel" name="mobile" value="">
+        <label>Mobile <span class="error">${mobileErr}</span></label>
+        <input type="tel" name="mobile" value="${sbean.mobile }">
 
-        <label>Address <span class="error"></span></label>
-        <textarea name="address" rows="3"></textarea>
+        <label>Address <span class="error">${addressErr}</span></label>
+        <textarea name="address" rows="3">${sbean.address }</textarea>
 
         <div class="btn-container">
             <input type="submit" value="Register">

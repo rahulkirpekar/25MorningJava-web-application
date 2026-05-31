@@ -2,7 +2,13 @@ package com.royal.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 
+import com.royal.bean.StudentBean;
+import com.royal.dao.StudentDao;
+import com.royal.util.StringUtils;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,37 +19,127 @@ public class InsertStudentServlet extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		// Backend Validation
 		response.setContentType("text/html");
 		String fullName  =	request.getParameter("fullname");
-		String age		 =	request.getParameter("age");
-		String course	 =	request.getParameter("course");
-		String gender	 =	request.getParameter("gender");
-		String hobby[]	 =	request.getParameterValues("hobby");
-		String dob		 =	request.getParameter("dob");
-		String email	 =	request.getParameter("email");
-		String mobile	 =	request.getParameter("mobile");
-		String address	 =	request.getParameter("address");
 		
-		PrintWriter out = response.getWriter();
-				
-		out.print("InsertStudentServlet service() : "+"<br>");
-		out.print("fullName : " + fullName+"<br>");
-		out.print("age : " + age+"<br>");
-		out.print("course : " + course+"<br>");
-		out.print("gender : " + gender+"<br>");
-		out.print("hobby : <br>");
+		StudentBean sbean = new StudentBean();
+
+		boolean flag = false;
 		
-		for (int i = 0; i < hobby.length; i++) 
+		if(StringUtils.isValidStr(fullName)) 
 		{
-			out.print("hobby["+i+"] : " + hobby[i]+"<br>");
+			sbean.setFullName(fullName);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("fullNameErr", "<font color='red'>Please enter valid FullName.</font>");
 		}
 		
+		String age = request.getParameter("age");
 		
-		out.print("dob : " + dob+"<br>");
-		out.print("email : " + email+"<br>");
-		out.print("mobile : " + mobile+"<br>");
-		out.print("address : " + address+"<br>");
+		if(StringUtils.isValidStr(age)) 
+		{
+			sbean.setAge(Integer.parseInt(age));
+		}else 
+		{
+			flag = true;
+			request.setAttribute("ageErr", "<font color='red'>Please enter valid Age.</font>");
+		}
 		
+		String course	 =	request.getParameter("course");
+
+		if(StringUtils.isValidStr(course)) 
+		{
+			sbean.setCourse(course);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("courseErr", "<font color='red'>Please enter valid Course.</font>");
+		}
+	
+		String gender	 =	request.getParameter("gender");
+		if(StringUtils.isValidStr(gender)) 
+		{
+			sbean.setGender(gender);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("genderErr", "<font color='red'>Please enter valid Gender.</font>");
+		}
 		
+		String hobby[]	 =	request.getParameterValues("hobby");
+		if(hobby !=null) 
+		{
+			sbean.setHobbies(hobby);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("hobbyErr", "<font color='red'>Please enter valid Hobby.</font>");
+		}		
+		
+		String dob		 =	request.getParameter("dob");
+		
+		if(StringUtils.isValidStr(dob)) 
+		{
+			sbean.setDob(dob);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("dobErr", "<font color='red'>Please enter valid DOB.</font>");
+		}
+		
+		String email	 =	request.getParameter("email");
+		
+		if(StringUtils.isValidStr(email)) 
+		{
+			sbean.setEmail(email);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("emailErr", "<font color='red'>Please enter valid Email.</font>");
+		}
+		String mobile	 =	request.getParameter("mobile");
+		
+		if(StringUtils.isValidStr(mobile)) 
+		{
+			sbean.setMobile(mobile);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("mobileErr", "<font color='red'>Please enter valid Mobile.</font>");
+		}
+		
+		String address	 =	request.getParameter("address");
+		if(StringUtils.isValidStr(address)) 
+		{
+			sbean.setAddress(address);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("addressErr", "<font color='red'>Please enter valid Address.</font>");
+		}
+		
+		request.setAttribute("sbean", sbean);
+		
+		RequestDispatcher rd = null;
+		if (flag) 
+		{
+			rd = request.getRequestDispatcher("studentregi.jsp");
+		} else 
+		{
+			StudentDao dao  = new StudentDao();
+			
+			int rowsAffected = dao.insertStudent(sbean);
+			
+			if(rowsAffected > 0) 
+			{
+				rd = request.getRequestDispatcher("ListStudentServlet");
+			}else 
+			{
+				rd = request.getRequestDispatcher("studentregi.jsp");
+			}
+		}
+		rd.forward(request, response);
 	}
 }

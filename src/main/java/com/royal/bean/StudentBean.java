@@ -2,9 +2,9 @@ package com.royal.bean;
 
 public class StudentBean 
 {
-	private int id;
+	private Integer id;
     private String fullName; 
-    private int age;
+    private Integer age;
     private String course;
     private String gender; 
     private String hobbies[];
@@ -17,7 +17,7 @@ public class StudentBean
     {
 	}
 
-	public StudentBean(int id, String fullName, int age, String course, String gender, String[] hobbies, String dob,
+	public StudentBean(Integer id, String fullName, Integer age, String course, String gender, String[] hobbies, String dob,
 			String email, String mobile, String address) {
 		this.id = id;
 		this.fullName = fullName;
@@ -31,11 +31,11 @@ public class StudentBean
 		this.address = address;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -47,11 +47,11 @@ public class StudentBean
 		this.fullName = fullName;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -109,5 +109,44 @@ public class StudentBean
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public boolean isAvailableHobby(String hobby) 
+	{
+		if (hobbies == null) 
+		{
+			return false;
+		}
+		
+		for (int i = 0; i < hobbies.length; i++) 
+		{			
+			if (hobby.equals(hobbies[i])) 
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public String getHoobiesStr() 
+	{
+		String hobbiesStr = "";
+		
+		if(hobbies== null) 
+		{
+			return "";
+		}
+		
+		for (int i = 0; i < hobbies.length; i++) 
+		{
+			if(i < (hobbies.length-1)) 
+			{
+				hobbiesStr = hobbiesStr + hobbies[i]+",";
+			}else 
+			{
+				hobbiesStr = hobbiesStr + hobbies[i];
+			}	
+		}
+		return hobbiesStr;
 	}
 }
