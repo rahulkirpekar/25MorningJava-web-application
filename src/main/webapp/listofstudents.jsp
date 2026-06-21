@@ -171,7 +171,7 @@ table tr:hover{
                 <td><%=s.getAddress()%></td>
 
                 <td>
-                    <a href="EditStudent?id=<%=s.getId()%>"
+                    <a href="EditStudentServlet?id=<%=s.getId()%>"
                        class="btn btn-edit">
                         Edit
                     </a>

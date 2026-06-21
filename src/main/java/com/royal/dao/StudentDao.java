@@ -51,9 +51,7 @@ public class StudentDao
 		}
 		return rowsAffected;
 	}
-	public void updateStudent() {
 
-	}
 	public ArrayList<StudentBean> getAllStudentRecords() 
 	{
 		String selectQuery = "SELECT * FROM student";
@@ -132,6 +130,62 @@ public class StudentDao
 			System.out.println("StudentDao--deleteStudent() Db not connected");
 		}
 		return rowsAffected;
+	}
+	public StudentBean getStudentById(int id) 
+	{
+		String selectQuery = "SELECT * FROM student WHERE id = ?";
+		PreparedStatement pstmt = null;
+		Connection conn = DbConnection.getConnection();
+		ResultSet rs = null;
+		StudentBean s = null;
+		if(conn!=null) 
+		{
+			try 
+			{
+				pstmt = conn.prepareStatement(selectQuery);
+			
+				pstmt.setInt(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				rs.next(); 
+				
+				s  = new StudentBean();
+				
+				s.setId(rs.getInt(1));
+				s.setFullName(rs.getString(2));
+				s.setAge(rs.getInt(3));
+				s.setCourse(rs.getString(4));
+				s.setGender(rs.getString(5));
+				
+				String hobbiesStr = rs.getString(6);
+				String hobbies[] = hobbiesStr.split(",");
+				
+				s.setHobbies(hobbies);
+				s.setDob(rs.getString(7));
+				s.setEmail(rs.getString(8));
+				s.setMobile(rs.getString(9));
+				s.setAddress(rs.getString(10));
+				
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}else 
+		{
+			System.out.println("StudentDao---getStudentById() Db not connected");
+		}
+		return s;
+	}
+	public static void main(String[] args) 
+	{
+		System.out.println(new StudentDao().getStudentById(10));
+		
+	}
+
+	public int updateStudent(StudentBean sbean, int id) 
+	{
+		return 0;
 	}
 }
 	

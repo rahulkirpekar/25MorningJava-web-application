@@ -206,5 +206,23 @@
   </servlet-mapping>
   
   
+  <servlet>
+  	<servlet-name>EditStudentServlet</servlet-name>
+  	<servlet-class>com.royal.controller.EditStudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EditStudentServlet</servlet-name>
+	<url-pattern>/EditStudentServlet</url-pattern>  
+  </servlet-mapping>
+  
+  
+    <servlet>
+  	<servlet-name>UpdateStudentServlet</servlet-name>
+  	<servlet-class>com.royal.controller.UpdateStudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateStudentServlet</servlet-name>
+	<url-pattern>/UpdateStudentServlet</url-pattern>  
+  </servlet-mapping>
   
 </web-app>
