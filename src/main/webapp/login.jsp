@@ -75,6 +75,9 @@ body{
 
     <h2>Login</h2>
 
+
+	${invalidUser}
+
     <form action="LoginServlet">
     
         <div class="input-group">

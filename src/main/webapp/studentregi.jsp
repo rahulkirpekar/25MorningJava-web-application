@@ -123,6 +123,13 @@
         margin-bottom: 10px;
         font-weight: bold;
     }
+    .validUser-success 
+    {
+       text-align: center;
+       color: green;
+       margin-bottom: 10px;
+       font-weight: bold;
+    }
 </style>
 
 <script>
@@ -148,6 +155,8 @@ function confirmLogout() {
 <div class="container">
 
     <div class="db-error">${dberror}</div>
+
+    <div class="validUser-success">${validUser}</div>
 
     <h2>Student Registration</h2>
 

@@ -20,7 +20,10 @@ public class UpdateStudentServlet extends HttpServlet
 		System.out.println("UpdateStudentServlet : service()");
 		StudentBean sbean = new StudentBean();
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		String idStr = request.getParameter("id");
+		System.out.println("idStr : " + idStr);
+		int id = Integer.parseInt(idStr);
+		System.out.println("id : " + id);
 		
 		sbean.setId(id);
 		
@@ -55,6 +58,7 @@ public class UpdateStudentServlet extends HttpServlet
 
 		if(StringUtils.isValidStr(course)) 
 		{
+			System.out.println("UpdateStudentServlet : course : "  +course);
 			sbean.setCourse(course);
 		}else 
 		{

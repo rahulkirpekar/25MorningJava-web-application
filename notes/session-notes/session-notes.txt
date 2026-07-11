@@ -1,0 +1,54 @@
+Session Tracking:-
+-------------------
+	1. HttpSession
+
+	Login:-
+	-----------
+			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(true);
+
+			HttpSession session = request.getSession(false);
+
+	Data Store:-
+	-----------
+			HttpSession session = request.getSession();
+				
+			1. session.setAttribute(String key,Object value);
+
+			2. Object value = (Object)session.getAttribute("String key");
+
+			3. session.removeAttribute(String key);
+
+	Logout:-
+	--------
+			HttpSession session = request.getSession(false);
+			if(session!=null)
+			{
+				session.invalidate();// session deleted
+			}
+
+
+	2. Cookie
+	3. Hidden form Field---EditStudent.jsp---id--hidden
+	4. Query String---list.jsp(EditServlet and DeleteServlet pass id  in request )
+
+
+	session - Duration----[login<------------->logout]
+
+
+
+	CREATE TABLE USER
+	(
+		id int PRIMARY KEY AUTO_INCREMENT,
+		email varchar(50),
+		name varchar(50),
+		password varchar(50)	
+	);
+
+INSERT INTO USER(email,name,password) VALUES ('rahul@gmail.com','Rahul Kirpekar','rahul@123');
+INSERT INTO USER(email,name,password) VALUES ('ankur@gmail.com','Ankur Barot','ankur@123');
+INSERT INTO USER(email,name,password) VALUES ('sagar@gmail.com','Sagar Jadhav','sagar@123');
+INSERT INTO USER(email,name,password) VALUES ('vansh@gmail.com','Vansh Shukla','vansh@123');
+INSERT INTO USER(email,name,password) VALUES ('ganesh@gmail.com','Ganesh From Kailash','ganesh@123');
+
+

@@ -154,7 +154,7 @@ function confirmLogout() {
     <form action="UpdateStudentServlet" method="post">
 
         <label>Student Id <span class="error">${idErr}</span></label>
-        <input type="text" name="id" value="${sbean.id}" disabled>
+        <input type="text" name="id" value="${sbean.id}" readonly="readonly">
 
         <label>Full Name <span class="error">${fullNameErr}</span></label>
         <input type="text" name="fullname" value="${sbean.fullName}">
@@ -165,11 +165,11 @@ function confirmLogout() {
         <label>Select Course <span class="error">${courseErr}</span></label>
         <select name="course">
             <option value="">-- Select Course --</option>
-            <option value="C Programming" ${sbean.course=='C Programming' ? 'selected':''}			>C Programming</option>
-            <option value="C++" 		  ${sbean.course=='C++' 		  ? 'selected':''}					>C++</option>
-            <option value="Core Java" 	  ${sbean.course=='Core Java' 	  ? 'selected':''}				>Core Java</option>
-            <option value="Advanced Java" ${sbean.course=='Advanced Java' ? 'selected':''}			>Advanced Java</option>
-            <option value="Python" 		  ${sbean.course=='Python' 		  ? 'selected':''}					>Python</option>
+            <option value="C Programming" ${sbean.course=='C Programming' ? 'selected' : ''}			>C Programming</option>
+            <option value="C++" 		  ${sbean.course=='C++' 		  ? 'selected' : ''}					>C++</option>
+            <option value="Core Java" 	  ${sbean.course=='Core Java' 	  ? 'selected' : ''}				>Core Java</option>
+            <option value="Advanced Java" ${sbean.course=='Advanced Java' ? 'selected' : ''}			>Advanced Java</option>
+            <option value="Python" 		  ${sbean.course=='Python' 		  ? 'selected' : ''}					>Python</option>
         </select>
 
         <label>Gender <span class="error">${genderErr}</span></label>
@@ -200,7 +200,7 @@ function confirmLogout() {
         <textarea name="address" rows="3">${sbean.address }</textarea>
 
         <div class="btn-container">
-            <input type="submit" value="Register">
+            <input type="submit" value="Update Record">
             <input type="reset" value="Clear">
         </div>
     </form>

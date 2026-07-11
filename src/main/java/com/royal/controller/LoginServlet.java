@@ -1,12 +1,17 @@
 package com.royal.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import com.royal.bean.UserBean;
+import com.royal.dao.UserDao;
+import com.royal.util.StringUtils;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class LoginServlet extends HttpServlet
 {
@@ -17,13 +22,36 @@ public class LoginServlet extends HttpServlet
 		response.setContentType("text/html");
 		System.out.println("LoginServlet---service()");
 		
-		String userName = request.getParameter("userName");
+		String emailId = request.getParameter("userName");
 		String password = request.getParameter("password");
 		
-		PrintWriter out = response.getWriter();
-
-		out.print("userName : " + userName+"</br>");
-		out.print("password : " + password+"</br>");
-		
+		RequestDispatcher rd = null;
+		if (StringUtils.isValidStr(emailId) && StringUtils.isValidStr(password)) 
+		{
+			UserDao userDao  = new UserDao();
+			
+			UserBean userBean = userDao.authenticateUser(emailId,password);
+			
+			if(userBean != null) 
+			{
+				// Create Session for Authenticate User
+				HttpSession session = (HttpSession)request.getSession();
+					
+				session.setAttribute("userBean", userBean);
+				
+				request.setAttribute("validUser", "<font color='green'>"+userBean+" successfully Login...!</font>");
+				
+				rd = request.getRequestDispatcher("studentregi.jsp");
+			}else 
+			{
+				request.setAttribute("invalidUser", "<font color='red'>Please enter valid UserName and Password.</font>");
+				rd = request.getRequestDispatcher("login.jsp");				
+			}			
+		} else 
+		{
+			request.setAttribute("invalidUser", "<font color='red'>Please enter valid UserName and Password.</font>");
+			rd = request.getRequestDispatcher("login.jsp");				
+		}
+		rd.forward(request, response);
 	}
 }
