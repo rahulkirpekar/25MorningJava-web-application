@@ -78,6 +78,8 @@ body{
 
 	${invalidUser}
 
+	${logoutSuccess}
+
     <form action="LoginServlet">
     
         <div class="input-group">

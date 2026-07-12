@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet
 					
 				session.setAttribute("userBean", userBean);
 				
-				request.setAttribute("validUser", "<font color='green'>"+userBean+" successfully Login...!</font>");
+				request.setAttribute("validUser", "<font color='green'>"+userBean.getName()+", successfully Login...!</font>");
 				
 				rd = request.getRequestDispatcher("studentregi.jsp");
 			}else 

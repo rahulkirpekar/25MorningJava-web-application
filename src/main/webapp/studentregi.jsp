@@ -130,6 +130,13 @@
        margin-bottom: 10px;
        font-weight: bold;
     }
+    .invalidUser-error
+	{
+	    text-align: center;
+	    color: red;
+	    margin-bottom: 10px;
+	    font-weight: bold;
+	}
 </style>
 
 <script>
@@ -156,7 +163,9 @@ function confirmLogout() {
 
     <div class="db-error">${dberror}</div>
 
-    <div class="validUser-success">${validUser}</div>
+	<div class="invalidUser-error">${invalidUser}</div>
+	
+	<div class="validUser-success">Welcome, ${validUser}</div>
 
     <h2>Student Registration</h2>
 
